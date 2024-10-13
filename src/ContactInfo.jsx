@@ -4,11 +4,13 @@ import { FcGlobe } from "react-icons/fc";
 import { FcContacts } from "react-icons/fc";
 import { CiEdit } from "react-icons/ci";
 
-const ContactInfo = ({ contacts, edit, toggleEdit }) => {
-  const [nameField, setNameField] = useState("");
-  const [phoneField, setPhoneField] = useState("");
-  const [emailField, setEmailField] = useState("");
-  const [locationField, setLocationField] = useState("");
+const ContactInfo = ({ edit, toggleEdit }) => {
+  const [contacts, setContacts] = useState({
+    name: "Oliver Fruergaard",
+    phone: "12345678",
+    email: "johndoe@gmail.com",
+    location: "Copenhagen",
+  });
 
   //overvej at fjerne edit-knappen fra komponentets flow og hav den siddende absolut positioneret
 
@@ -25,23 +27,25 @@ const ContactInfo = ({ contacts, edit, toggleEdit }) => {
       {!edit ? (
         <div className="flex flex-col items-center">
           <div className="flex gap-4">
-            <h1 className="text-3xl font-extrabold">{contacts.name}</h1>
+            <h1 className="text-3xl font-extrabold text-center">
+              {contacts.name}
+            </h1>
             <button onClick={toggleEdit}>
               <CiEdit></CiEdit>
             </button>
           </div>
-          <div className="mt-10 flex flex-row justify-between gap-10 text-xs">
+          <div className="mt-10 flex flex-col sm:flex-row justify-between gap-5 sm:gap-10 text-xs">
             <div className="flex gap-2 items-center">
               <FcPhone size={20}></FcPhone>
               <p>{contacts.phone}</p>
             </div>
             <div className="flex gap-2 items-center">
               <FcContacts size={20}></FcContacts>
-              {contacts.email}
+              <p>{contacts.email}</p>
             </div>
             <div className="flex gap-2 items-center">
               <FcGlobe size={20}></FcGlobe>
-              {contacts.location}
+              <p>{contacts.location}</p>
             </div>
           </div>
         </div>
@@ -65,15 +69,39 @@ const ContactInfo = ({ contacts, edit, toggleEdit }) => {
           <div className="mt-10 flex flex-row justify-between gap-10 text-xs">
             <div className="flex gap-2 items-center">
               <FcPhone size={20}></FcPhone>
-              <p>{contacts.phone}</p>
+              <p>
+                {" "}
+                <input
+                  type="text"
+                  name="phone"
+                  className="bg-transparent text-center"
+                  value={contacts.phone}
+                  placeholder={contacts.phone}
+                  onChange={handleInputChange}
+                />
+              </p>
             </div>
             <div className="flex gap-2 items-center">
               <FcContacts size={20}></FcContacts>
-              {contacts.email}
+              <input
+                type="text"
+                name="email"
+                className="bg-transparent text-center"
+                value={contacts.email}
+                placeholder={contacts.email}
+                onChange={handleInputChange}
+              />
             </div>
             <div className="flex gap-2 items-center">
               <FcGlobe size={20}></FcGlobe>
-              {contacts.location}
+              <input
+                type="text"
+                name="location"
+                className="bg-transparent text-center"
+                value={contacts.location}
+                placeholder={contacts.location}
+                onChange={handleInputChange}
+              />
             </div>
           </div>
         </div>
