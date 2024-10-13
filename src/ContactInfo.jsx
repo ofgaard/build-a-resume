@@ -12,8 +12,6 @@ const ContactInfo = ({ edit, toggleEdit }) => {
     location: "Copenhagen",
   });
 
-  //overvej at fjerne edit-knappen fra komponentets flow og hav den siddende absolut positioneret
-
   const handleInputChange = (e) => {
     const { name, value } = e.target; // Destructure name and value from the input
     setContacts((prevState) => ({
