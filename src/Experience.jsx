@@ -39,15 +39,34 @@ const Experience = ({ edit, toggleEdit, add, toggleAdd }) => {
       description: "",
     });
     console.log(experience);
-    toggleAdd();
+    toggleAdd(0);
   };
 
   return (
     <>
+      {experience.map((job) => (
+        <div key={job.id} className="mt-4 pb-10">
+          <div className="flex justify-between">
+            <h1 className="font-extrabold text-orange-500">{job.name}</h1>
+            <h1 className="font-thin">{job.location}</h1>
+          </div>
+          <div className="flex justify-between">
+            <div>
+              <h2 className="font-semibold">{job.position}</h2>
+              <p className="text-sm opacity-70 max-w-44">{job.description}</p>
+            </div>
+            <div className="text-right">
+              <p className="text-sm">
+                {job.startDate} - {job.endDate}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
       {add === 2 && (
-        <div className="flex flex-col mt-14 text-sm gap-2 border-b pb-4">
+        <div className="flex flex-col mt-14 text-sm gap-2 pb-10">
           <div className="flex justify-between min-w-max">
-            <h1 className="font-extrabold text-yellow-500">
+            <h1 className="font-extrabold text-orange-500">
               <input
                 type="text
                 "
@@ -122,7 +141,7 @@ const Experience = ({ edit, toggleEdit, add, toggleAdd }) => {
                 </p>
               </div>
               <button
-                className="mt-4 ml-auto border text-xs border-yellow-500 p-1 rounded-md hover:scale-105"
+                className="mt-4 ml-auto border text-xs border-orange-500 p-1 rounded-md hover:scale-105"
                 onClick={submitChanges}
               >
                 Submit
@@ -131,25 +150,6 @@ const Experience = ({ edit, toggleEdit, add, toggleAdd }) => {
           </div>
         </div>
       )}{" "}
-      {experience.map((job) => (
-        <div key={job.id} className="mt-4 border-b pb-2">
-          <div className="flex justify-between">
-            <h1 className="font-extrabold text-yellow-500">{job.name}</h1>
-            <h1 className="font-thin">{job.location}</h1>
-          </div>
-          <div className="flex justify-between">
-            <div>
-              <h2 className="font-semibold">{job.position}</h2>
-              <p className="text-sm opacity-70">{job.description}</p>
-            </div>
-            <div className="text-right">
-              <p className="text-sm">
-                {job.startDate} - {job.endDate}
-              </p>
-            </div>
-          </div>
-        </div>
-      ))}
     </>
   );
 };

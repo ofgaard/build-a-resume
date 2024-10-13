@@ -23,7 +23,7 @@ const ContactInfo = ({ edit, toggleEdit }) => {
   return (
     <>
       {!edit ? (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center mb-10">
           <div className="flex gap-4">
             <h1 className="text-3xl font-extrabold text-center">
               {contacts.name}
@@ -48,7 +48,7 @@ const ContactInfo = ({ edit, toggleEdit }) => {
           </div>
         </div>
       ) : (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center mb-10">
           <div className="flex gap-4">
             <h1 className="text-3xl font-extrabold">
               <input
