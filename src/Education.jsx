@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-const Experience = ({ edit, toggleEdit, add, toggleAdd }) => {
-  const [experience, setExperience] = useState([]);
-  const [newExperience, setNewExperience] = useState({
+const Education = ({ edit, toggleEdit, add, toggleAdd }) => {
+  const [education, setEducation] = useState([]);
+  const [newEducation, setNewEducation] = useState({
     name: "",
-    position: "",
+    degree: "",
     location: "",
     startDate: "",
     endDate: "",
@@ -13,38 +13,38 @@ const Experience = ({ edit, toggleEdit, add, toggleAdd }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target; // Destructure name and value from the input
-    setNewExperience((prevState) => ({
+    setNewEducation((prevState) => ({
       ...prevState, // Spread the previous state
       [name]: value, // Update the specific key (name) with the new value
     }));
   };
 
   const submitChanges = () => {
-    let experienceToAdd = {
+    let educationToAdd = {
       id: crypto.randomUUID(),
-      name: newExperience.name,
-      position: newExperience.position,
-      location: newExperience.location,
-      startDate: newExperience.startDate,
-      endDate: newExperience.endDate,
-      description: newExperience.description,
+      name: newEducation.name,
+      position: newEducation.degree,
+      location: newEducation.location,
+      startDate: newEducation.startDate,
+      endDate: newEducation.endDate,
+      description: newEducation.description,
     };
-    setExperience([...experience, experienceToAdd]);
-    setNewExperience({
+    setEducation([...education, educationToAdd]);
+    setNewEducation({
       name: "",
-      position: "",
+      degree: "",
       location: "",
       startDate: "",
       endDate: "",
       description: "",
     });
-    console.log(experience);
-    toggleAdd();
+    console.log(education);
+    toggleAdd(0);
   };
 
   return (
     <>
-      {add === 2 && (
+      {add === 1 && (
         <div className="flex flex-col mt-14 text-sm gap-2 border-b pb-4">
           <div className="flex justify-between min-w-max">
             <h1 className="font-extrabold text-yellow-500">
@@ -53,8 +53,8 @@ const Experience = ({ edit, toggleEdit, add, toggleAdd }) => {
                 "
                 className="bg-transparent"
                 name="name"
-                value={newExperience.name}
-                placeholder="Workplace"
+                value={newEducation.name}
+                placeholder="School"
                 onChange={handleInputChange}
               />
             </h1>
@@ -64,7 +64,7 @@ const Experience = ({ edit, toggleEdit, add, toggleAdd }) => {
                 "
                 className="bg-transparent text-right"
                 name="location"
-                value={newExperience.location}
+                value={newEducation.location}
                 placeholder="Location"
                 onChange={handleInputChange}
               />
@@ -78,8 +78,8 @@ const Experience = ({ edit, toggleEdit, add, toggleAdd }) => {
                 "
                   className="bg-transparent"
                   name="position"
-                  value={newExperience.position}
-                  placeholder="Position"
+                  value={newEducation.degree}
+                  placeholder="Degree"
                   onChange={handleInputChange}
                 />
               </h2>
@@ -89,7 +89,7 @@ const Experience = ({ edit, toggleEdit, add, toggleAdd }) => {
                 "
                   className="bg-transparent"
                   name="description"
-                  value={newExperience.description}
+                  value={newEducation.description}
                   placeholder="Description"
                   onChange={handleInputChange}
                 />
@@ -103,7 +103,7 @@ const Experience = ({ edit, toggleEdit, add, toggleAdd }) => {
                 "
                     className="bg-transparent text-right"
                     name="startDate"
-                    value={newExperience.startDate}
+                    value={newEducation.startDate}
                     placeholder="Start Date"
                     onChange={handleInputChange}
                   />
@@ -115,7 +115,7 @@ const Experience = ({ edit, toggleEdit, add, toggleAdd }) => {
                 "
                     className="bg-transparent text-right"
                     name="endDate"
-                    value={newExperience.endDate}
+                    value={newEducation.endDate}
                     placeholder="End Date"
                     onChange={handleInputChange}
                   />
@@ -131,20 +131,20 @@ const Experience = ({ edit, toggleEdit, add, toggleAdd }) => {
           </div>
         </div>
       )}{" "}
-      {experience.map((job) => (
-        <div key={job.id} className="mt-4 border-b pb-2">
+      {education.map((school) => (
+        <div key={school.id} className="mt-4 border-b pb-2">
           <div className="flex justify-between">
-            <h1 className="font-extrabold text-yellow-500">{job.name}</h1>
-            <h1 className="font-thin">{job.location}</h1>
+            <h1 className="font-extrabold text-yellow-500">{school.name}</h1>
+            <h1 className="font-thin">{school.location}</h1>
           </div>
           <div className="flex justify-between">
             <div>
-              <h2 className="font-semibold">{job.position}</h2>
-              <p className="text-sm opacity-70">{job.description}</p>
+              <h2 className="font-semibold">{school.degree}</h2>
+              <p className="text-sm opacity-70">{school.description}</p>
             </div>
             <div className="text-right">
               <p className="text-sm">
-                {job.startDate} - {job.endDate}
+                {school.startDate} - {school.endDate}
               </p>
             </div>
           </div>
@@ -154,4 +154,4 @@ const Experience = ({ edit, toggleEdit, add, toggleAdd }) => {
   );
 };
 
-export default Experience;
+export default Education;
