@@ -25,24 +25,32 @@ const ContactInfo = ({ edit, toggleEdit }) => {
       {!edit ? (
         <div className="flex flex-col items-center mb-10">
           <div className="flex gap-4">
-            <h1 className="text-3xl font-extrabold text-center">
+            <h1 className="text-5xl md:text-6xl font-extrabold text-center">
               {contacts.name}
             </h1>
-            <button onClick={toggleEdit}>
-              <CiEdit></CiEdit>
-            </button>
+            <div className="print:hidden">
+              <button onClick={toggleEdit}>
+                <CiEdit size={40}></CiEdit>
+              </button>
+            </div>
           </div>
           <div className="mt-10 flex flex-col sm:flex-row justify-between gap-5 sm:gap-10 text-xs">
             <div className="flex gap-2 items-center">
-              <FcPhone size={20}></FcPhone>
+              <div className="print:hidden">
+                <FcPhone size={20}></FcPhone>
+              </div>
               <p>{contacts.phone}</p>
             </div>
             <div className="flex gap-2 items-center">
-              <FcContacts size={20}></FcContacts>
+              <div className="print:hidden">
+                <FcContacts size={20}></FcContacts>
+              </div>
               <p>{contacts.email}</p>
             </div>
             <div className="flex gap-2 items-center">
-              <FcGlobe size={20}></FcGlobe>
+              <div className="print:hidden">
+                <FcGlobe size={20}></FcGlobe>
+              </div>
               <p>{contacts.location}</p>
             </div>
           </div>
@@ -50,7 +58,7 @@ const ContactInfo = ({ edit, toggleEdit }) => {
       ) : (
         <div className="flex flex-col items-center mb-10">
           <div className="flex gap-4">
-            <h1 className="text-3xl font-extrabold">
+            <h1 className="text-5xl md:text-6xl font-extrabold text-center">
               <input
                 type="text"
                 name="name"
@@ -61,10 +69,10 @@ const ContactInfo = ({ edit, toggleEdit }) => {
               />
             </h1>
             <button onClick={toggleEdit}>
-              <CiEdit></CiEdit>
+              <CiEdit size={40}></CiEdit>
             </button>
           </div>
-          <div className="mt-10 flex flex-row justify-between gap-10 text-xs">
+          <div className="mt-10 flex flex-col sm:flex-row justify-between gap-5 sm:gap-10 text-xs">
             <div className="flex gap-2 items-center">
               <FcPhone size={20}></FcPhone>
               <p>

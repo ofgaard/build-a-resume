@@ -1,6 +1,14 @@
 import { useState } from "react";
+import { FcBriefcase } from "react-icons/fc";
 
-const Experience = ({ edit, toggleEdit, add, toggleAdd }) => {
+const Experience = ({
+  edit,
+  toggleEdit,
+  add,
+  toggleAdd,
+  toggleAddExperience,
+  addExperience,
+}) => {
   const [experience, setExperience] = useState([]);
   const [newExperience, setNewExperience] = useState({
     name: "",
@@ -44,112 +52,139 @@ const Experience = ({ edit, toggleEdit, add, toggleAdd }) => {
 
   return (
     <>
-      {experience.map((job) => (
-        <div key={job.id} className="mt-4 pb-10">
-          <div className="flex justify-between">
-            <h1 className="font-extrabold text-orange-500">{job.name}</h1>
-            <h1 className="font-thin">{job.location}</h1>
-          </div>
-          <div className="flex justify-between">
-            <div>
-              <h2 className="font-semibold">{job.position}</h2>
-              <p className="text-sm opacity-70 max-w-44">{job.description}</p>
-            </div>
-            <div className="text-right">
-              <p className="text-sm">
-                {job.startDate} - {job.endDate}
-              </p>
-            </div>
-          </div>
+      <div className="bg-neutral-700 rounded-md p-3">
+        <div className="flex items-center gap-2 mb-4">
+          <FcBriefcase size={30}></FcBriefcase>
+          <h1 className="translate-y-0.5 font-extrabold">Work Experience</h1>
         </div>
-      ))}
-      {add === 2 && (
-        <div className="flex flex-col mt-14 text-sm gap-2 pb-10">
-          <div className="flex justify-between min-w-max">
-            <h1 className="font-extrabold text-orange-500">
-              <input
-                type="text
-                "
-                className="bg-transparent"
-                name="name"
-                value={newExperience.name}
-                placeholder="Workplace"
-                onChange={handleInputChange}
-              />
-            </h1>
-            <h1 className="font-thin">
-              <input
-                type="text
-                "
-                className="bg-transparent text-right"
-                name="location"
-                value={newExperience.location}
-                placeholder="Location"
-                onChange={handleInputChange}
-              />
-            </h1>
-          </div>
-          <div className="flex flex-row justify-between">
-            <div className="">
-              <h2>
-                <input
-                  type="text
-                "
-                  className="bg-transparent"
-                  name="position"
-                  value={newExperience.position}
-                  placeholder="Position"
-                  onChange={handleInputChange}
-                />
-              </h2>
-              <p className="max-w-60 mt-2 opacity-70 font-light">
-                <input
-                  type="text
-                "
-                  className="bg-transparent"
-                  name="description"
-                  value={newExperience.description}
-                  placeholder="Description"
-                  onChange={handleInputChange}
-                />
-              </p>
+        {experience.map((job) => (
+          <div key={job.id} className="mt-4 p-3">
+            <div className="flex justify-between">
+              <h1 className="font-extrabold text-orange-500">{job.name}</h1>
+              <h1 className="font-thin">{job.location}</h1>
             </div>
-            <div className="flex flex-col justify-between">
+            <div className="flex justify-between">
               <div>
-                <p>
+                <h2 className="font-semibold">{job.position}</h2>
+                <p className="text-sm opacity-70 max-w-44 md:max-w-96">
+                  {job.description}
+                </p>
+              </div>
+              <div className="text-right">
+                <p className="text-sm">
+                  {job.startDate} - {job.endDate}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+        {add === 2 && (
+          <div className="flex flex-col text-sm gap-2 p-3">
+            <div className="flex justify-between min-w-max">
+              <h1 className="font-extrabold text-orange-500">
+                <input
+                  type="text
+                "
+                  className="bg-transparent"
+                  name="name"
+                  value={newExperience.name}
+                  placeholder="Workplace"
+                  onChange={handleInputChange}
+                />
+              </h1>
+              <h1 className="font-thin">
+                <input
+                  type="text
+                "
+                  className="bg-transparent text-right"
+                  name="location"
+                  value={newExperience.location}
+                  placeholder="Location"
+                  onChange={handleInputChange}
+                />
+              </h1>
+            </div>
+            <div className="flex flex-row justify-between">
+              <div className="">
+                <h2>
                   <input
                     type="text
                 "
-                    className="bg-transparent text-right"
-                    name="startDate"
-                    value={newExperience.startDate}
-                    placeholder="Start Date"
+                    className="bg-transparent"
+                    name="position"
+                    value={newExperience.position}
+                    placeholder="Position"
                     onChange={handleInputChange}
                   />
-                </p>
-                <p>
-                  {" "}
+                </h2>
+                <p className="max-w-60 mt-2 opacity-70 font-light">
                   <input
                     type="text
                 "
-                    className="bg-transparent text-right"
-                    name="endDate"
-                    value={newExperience.endDate}
-                    placeholder="End Date"
+                    className="bg-transparent"
+                    name="description"
+                    value={newExperience.description}
+                    placeholder="Description"
                     onChange={handleInputChange}
                   />
                 </p>
               </div>
-              <button
-                className="mt-4 ml-auto border text-xs border-orange-500 p-1 rounded-md hover:scale-105"
-                onClick={submitChanges}
-              >
-                Submit
-              </button>
+              <div className="flex flex-col justify-between">
+                <div>
+                  <p>
+                    <input
+                      type="text
+                "
+                      className="bg-transparent text-right"
+                      name="startDate"
+                      value={newExperience.startDate}
+                      placeholder="Start Date"
+                      onChange={handleInputChange}
+                    />
+                  </p>
+                  <p>
+                    {" "}
+                    <input
+                      type="text
+                "
+                      className="bg-transparent text-right"
+                      name="endDate"
+                      value={newExperience.endDate}
+                      placeholder="End Date"
+                      onChange={handleInputChange}
+                    />
+                  </p>
+                </div>
+                <button
+                  className="mt-4 ml-auto border text-xs border-orange-500 p-1 rounded-md hover:scale-105"
+                  onClick={submitChanges}
+                >
+                  Submit
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      )}{" "}
+        )}{" "}
+        {experience.length === 0 && add !== 2 && (
+          <div className="mt-4 pb-3 opacity-50">
+            <div className="flex justify-between">
+              <h1 className="font-extrabold text-orange-500">Job goes here</h1>
+              <h1 className="font-thin">Location</h1>
+            </div>
+            <div className="flex justify-between">
+              <div>
+                <h2 className="font-semibold">Position</h2>
+                <p className="text-sm opacity-70 max-w-44 md:max-w-96">
+                  Job Description
+                </p>
+              </div>
+              <div className="text-right">
+                <p className="text-sm">Start - End</p>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
     </>
   );
 };

@@ -11,3 +11,14 @@
 #root {
   overflow-x: hidden; /* Prevent horizontal overflow */
 }
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(10px); /* Slight movement */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0); /* Element moves into position */
+}

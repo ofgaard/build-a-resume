@@ -3,7 +3,7 @@ import { IoMdAddCircleOutline } from "react-icons/io";
 
 const AddButton = ({ add, toggleAdd, dropDown, toggleDropDown }) => {
   return (
-    <div className="mt-10 flex flex-col items-center text-sm">
+    <div className="mt-10 flex flex-col items-center text-sm print:hidden">
       <button
         onClick={toggleDropDown}
         className="flex items-center p-2 duration-200 border text-xs rounded-md border-yellow-800 hover:scale-105"
