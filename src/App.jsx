@@ -23,9 +23,11 @@ function App() {
     }
     if (input === 1) {
       setAdd(1);
+      toggleDropDown();
     }
     if (input === 2) {
       setAdd(2);
+      toggleDropDown();
     }
   };
 
@@ -33,14 +35,13 @@ function App() {
   return (
     <>
       <div className="bg-neutral-800 print:bg-slate-50">
-        <div className="bg-neutral-800 print:bg-slate-50 h-screen flex overflow-auto flex-col text-slate-50 print:text-black font-semibold p-10 min-w-96 max-w-5xl mx-auto">
+        <div className="bg-neutral-800 print:bg-slate-50 h-screen flex overflow-auto flex-col text-slate-50 print:text-black font-semibold p-10 min-w-96 max-w-3xl mx-auto">
           <ContactInfo edit={edit} toggleEdit={toggleEdit}></ContactInfo>
           <div className="mb-5 mt-6">
             <Experience
               add={add}
-              edit={edit}
               toggleAdd={toggleAdd}
-              toggleEdit={toggleEdit}
+              toggleDropDown={toggleDropDown}
             ></Experience>
           </div>
           <Education

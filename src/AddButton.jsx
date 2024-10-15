@@ -6,7 +6,7 @@ const AddButton = ({ add, toggleAdd, dropDown, toggleDropDown }) => {
     <div className="mt-10 flex flex-col items-center text-sm print:hidden">
       <button
         onClick={toggleDropDown}
-        className="flex items-center p-2 duration-200 border text-xs rounded-md border-yellow-800 hover:scale-105"
+        className="flex items-center p-2 duration-200 border text-xs rounded-md border-yellow-500 hover:scale-105"
       >
         Add ...
       </button>
@@ -17,10 +17,16 @@ const AddButton = ({ add, toggleAdd, dropDown, toggleDropDown }) => {
             : "max-h-0 opacity-0 overflow-hidden"
         }`}
       >
-        <button onClick={() => toggleAdd(1)} className="mt-2 p-2 duration-200">
+        <button
+          onClick={() => toggleAdd(1)}
+          className="mt-2 p-2 duration-200 hover:scale-105"
+        >
           Education
         </button>
-        <button onClick={() => toggleAdd(2)} className="mt-2 p-2 duration-200">
+        <button
+          onClick={() => toggleAdd(2)}
+          className="mt-2 p-2 duration-200 hover:scale-105"
+        >
           Experience
         </button>
       </div>

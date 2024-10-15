@@ -54,7 +54,7 @@ const Education = ({ edit, toggleEdit, add, toggleAdd }) => {
         {education.map((school) => (
           <div key={school.id} className="mt-4 p-3">
             <div className="flex justify-between">
-              <h1 className="font-extrabold text-orange-500">{school.name}</h1>
+              <h1 className="font-extrabold text-yellow-500">{school.name}</h1>
               <h1 className="font-thin">{school.location}</h1>
             </div>
             <div className="flex justify-between">
@@ -149,7 +149,7 @@ const Education = ({ edit, toggleEdit, add, toggleAdd }) => {
                   </p>
                 </div>
                 <button
-                  className="mt-4 ml-auto border text-xs border-orange-500 p-1 rounded-md hover:scale-105 disabled:opacity-60"
+                  className="mt-4 ml-auto border text-xs border-yellow-500 p-1 rounded-md hover:scale-105 disabled:opacity-60"
                   onClick={submitChanges}
                   disabled={
                     !newEducation.name ||
@@ -168,7 +168,7 @@ const Education = ({ edit, toggleEdit, add, toggleAdd }) => {
         {education.length === 0 && add !== 1 && (
           <div className="mt-4 p-3 opacity-50">
             <div className="flex justify-between">
-              <h1 className="font-extrabold text-orange-500">
+              <h1 className="font-extrabold text-yellow-500">
                 Your University Here
               </h1>
               <h1 className="font-thin">Degree</h1>
