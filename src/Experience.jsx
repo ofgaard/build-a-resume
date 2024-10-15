@@ -30,11 +30,11 @@ const Experience = ({
   });
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target; // Destructure name and value from the input
+    const { name, value } = e.target;
     if (editMode.id == "") {
       setNewExperience((prevState) => ({
-        ...prevState, // Spread the previous state
-        [name]: value, // Update the specific key (name) with the new value
+        ...prevState,
+        [name]: value,
       }));
     } else {
       setExperienceToEdit((prevState) => ({ ...prevState, [name]: value }));
@@ -71,7 +71,6 @@ const Experience = ({
       });
       toggleAdd(0);
     } else {
-      // Edit existing experience
       const indexToUpdate = experience.findIndex(
         (job) => job.id === editMode.id
       );
@@ -95,7 +94,6 @@ const Experience = ({
         setExperience(updatedJobs);
       }
 
-      // Reset edit mode
       setEditMode({ id: "" });
     }
   };

@@ -40,7 +40,9 @@ function App() {
           <div className="mb-5 mt-6">
             <Experience
               add={add}
+              edit={edit}
               toggleAdd={toggleAdd}
+              toggleEdit={toggleEdit}
               toggleDropDown={toggleDropDown}
             ></Experience>
           </div>
