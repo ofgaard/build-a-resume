@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { CiEdit } from "react-icons/ci";
 import { FcBusinessman } from "react-icons/fc";
+import { MdDeleteOutline } from "react-icons/md";
 
 const Education = ({ add, toggleAdd }) => {
   const [education, setEducation] = useState([]);
@@ -36,10 +37,21 @@ const Education = ({ add, toggleAdd }) => {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      submitChanges();
+    }
+  };
+
   const handleEdit = (id) => {
     let itemToEdit = education.find((item) => item.id === id);
     setEducationToEdit(itemToEdit);
     setEditMode({ id: id });
+  };
+
+  const handleDelete = (id) => {
+    let cleanedUpList = education.filter((school) => school.id !== id);
+    setEducation(cleanedUpList);
   };
 
   const submitChanges = () => {
@@ -106,13 +118,24 @@ const Education = ({ add, toggleAdd }) => {
                   <h1 className="font-extrabold text-yellow-500">
                     {school.name}
                   </h1>
-                  <button
-                    onClick={() => {
-                      handleEdit(school.id);
-                    }}
-                  >
-                    <CiEdit size={20}></CiEdit>
-                  </button>
+                  <div className="flex items-center gap-1">
+                    <button
+                      className="hover:scale-110"
+                      onClick={() => {
+                        handleEdit(school.id);
+                      }}
+                    >
+                      <CiEdit size={20}></CiEdit>
+                    </button>
+                    <button
+                      onClick={() => {
+                        handleDelete(school.id);
+                      }}
+                      className="hover:scale-110"
+                    >
+                      <MdDeleteOutline size={20}></MdDeleteOutline>
+                    </button>
+                  </div>
                 </div>
                 <h1 className="font-thin">{school.location}</h1>
               </div>
@@ -209,6 +232,7 @@ const Education = ({ add, toggleAdd }) => {
                   <button
                     className="mt-4 ml-auto border text-xs border-yellow-500 p-1 rounded-md hover:scale-105 disabled:opacity-60"
                     onClick={submitChanges}
+                    onKeyDown={handleKeyDown}
                   >
                     Submit
                   </button>
@@ -296,13 +320,7 @@ const Education = ({ add, toggleAdd }) => {
                 <button
                   className="mt-4 ml-auto border text-xs border-yellow-500 p-1 rounded-md hover:scale-105 disabled:opacity-60"
                   onClick={submitChanges}
-                  disabled={
-                    !newEducation.name ||
-                    !newEducation.degree ||
-                    !newEducation.location ||
-                    !newEducation.startDate ||
-                    !newEducation.endDate
-                  }
+                  onKeyDown={handleKeyDown}
                 >
                   Submit
                 </button>

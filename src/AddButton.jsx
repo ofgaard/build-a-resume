@@ -6,7 +6,7 @@ const AddButton = ({ add, toggleAdd, dropDown, toggleDropDown }) => {
     <div className="mt-10 flex flex-col items-center text-sm print:hidden">
       <button
         onClick={toggleDropDown}
-        className="flex items-center p-2 duration-200 border text-xs rounded-md border-yellow-500 hover:scale-105"
+        className="flex items-center p-2 border text-xs rounded-md border-yellow-500 hover:scale-125 transition ease-in-out duration-500"
       >
         Add ...
       </button>

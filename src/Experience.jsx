@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FcBriefcase } from "react-icons/fc";
 import { CiEdit } from "react-icons/ci";
+import { MdDeleteOutline } from "react-icons/md";
 
 const Experience = ({
   add,
@@ -41,11 +42,22 @@ const Experience = ({
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      submitChanges();
+    }
+  };
+
   const handleEdit = (id) => {
     let itemToEdit = experience.find((item) => item.id === id);
     setExperienceToEdit(itemToEdit);
     setEditMode({ id: id });
     console.log(experienceToEdit);
+  };
+
+  const handleDelete = (id) => {
+    let cleanedUpList = experience.filter((job) => job.id !== id);
+    setExperience(cleanedUpList);
   };
 
   const submitChanges = () => {
@@ -109,15 +121,26 @@ const Experience = ({
           job.id !== editMode.id ? (
             <div key={job.id} className="mt-4 p-3">
               <div className="flex justify-between">
-                <div className="flex gap-1">
+                <div className="flex gap-2">
                   <h1 className="font-extrabold text-yellow-500">{job.name}</h1>
-                  <button
-                    onClick={() => {
-                      handleEdit(job.id);
-                    }}
-                  >
-                    <CiEdit size={20}></CiEdit>
-                  </button>
+                  <div className="flex items-center gap-1">
+                    <button
+                      className="hover:scale-110"
+                      onClick={() => {
+                        handleEdit(job.id);
+                      }}
+                    >
+                      <CiEdit size={20}></CiEdit>
+                    </button>
+                    <button
+                      onClick={() => {
+                        handleDelete(job.id);
+                      }}
+                      className="hover:scale-110"
+                    >
+                      <MdDeleteOutline size={20}></MdDeleteOutline>
+                    </button>
+                  </div>
                 </div>
                 <h1 className="font-thin">{job.location}</h1>
               </div>
@@ -136,7 +159,10 @@ const Experience = ({
               </div>
             </div>
           ) : (
-            <div className="flex flex-col text-sm gap-2 p-3">
+            <div
+              key={experienceToEdit.id}
+              className="flex flex-col text-sm gap-2 p-3"
+            >
               <div className="flex justify-between min-w-max">
                 <h1 className="font-extrabold text-yellow-500">
                   <input
@@ -215,6 +241,7 @@ const Experience = ({
                   <button
                     className="mt-4 ml-auto border text-xs border-yellow-500 p-1 rounded-md hover:scale-105"
                     onClick={submitChanges}
+                    onKeyDown={handleKeyDown}
                   >
                     Submit
                   </button>
@@ -303,6 +330,7 @@ const Experience = ({
                 <button
                   className="mt-4 ml-auto border text-xs border-yellow-500 p-1 rounded-md hover:scale-105"
                   onClick={submitChanges}
+                  onKeyDown={handleKeyDown}
                 >
                   Submit
                 </button>
