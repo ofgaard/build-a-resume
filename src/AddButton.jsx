@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { IoMdAddCircleOutline } from "react-icons/io";
 
-const AddButton = ({ add, toggleAdd, dropDown, toggleDropDown }) => {
+const AddButton = ({ add, toggleAdd, dropDown, toggleDropDown, darkMode }) => {
   return (
-    <div className="mt-10 flex flex-col items-center text-sm print:hidden">
+    <div className="flex flex-col items-center text-sm print:hidden">
       <button
         onClick={toggleDropDown}
-        className="flex items-center p-2 border text-xs rounded-md border-yellow-500 hover:scale-125 transition ease-in-out duration-500"
+        className={`flex items-center p-2 border text-xs rounded-md ${
+          darkMode ? "border-yellow-500" : "border-slate-800"
+        } hover:scale-125 transition ease-in-out duration-500`}
       >
         Add ...
       </button>

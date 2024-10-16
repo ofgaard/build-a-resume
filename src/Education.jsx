@@ -3,7 +3,7 @@ import { CiEdit } from "react-icons/ci";
 import { FcBusinessman } from "react-icons/fc";
 import { MdDeleteOutline } from "react-icons/md";
 
-const Education = ({ add, toggleAdd }) => {
+const Education = ({ add, toggleAdd, darkMode }) => {
   const [education, setEducation] = useState([]);
   const [newEducation, setNewEducation] = useState({
     name: "",
@@ -105,7 +105,13 @@ const Education = ({ add, toggleAdd }) => {
 
   return (
     <>
-      <div className="bg-neutral-700 rounded-md p-3">
+      <div
+        className={` ${
+          darkMode
+            ? "bg-neutral-700 transition-colors "
+            : "bg-neutral-300 transition-colors"
+        } rounded-md p-3`}
+      >
         <div className="flex items-center gap-2 mb-4">
           <FcBusinessman size={30}></FcBusinessman>
           <h1 className="translate-y-0.5 font-extrabold">Education</h1>
@@ -115,7 +121,11 @@ const Education = ({ add, toggleAdd }) => {
             <div key={school.id} className="mt-4 p-3">
               <div className="flex justify-between">
                 <div className="flex gap-1">
-                  <h1 className="font-extrabold text-yellow-500">
+                  <h1
+                    className={`font-extrabold ${
+                      darkMode ? "text-neutral-200" : "text-slate-800"
+                    }`}
+                  >
                     {school.name}
                   </h1>
                   <div className="flex items-center gap-1">
@@ -156,7 +166,11 @@ const Education = ({ add, toggleAdd }) => {
           ) : (
             <div className="flex flex-col text-sm gap-2 p-3">
               <div className="flex justify-between min-w-max">
-                <h1 className="font-extrabold text-yellow-500">
+                <h1
+                  className={`font-extrabold ${
+                    darkMode ? "text-yellow-500" : "text-slate-800"
+                  }`}
+                >
                   <input
                     type="text
                 "
@@ -230,7 +244,9 @@ const Education = ({ add, toggleAdd }) => {
                     </p>
                   </div>
                   <button
-                    className="mt-4 ml-auto border text-xs border-yellow-500 p-1 rounded-md hover:scale-105 disabled:opacity-60"
+                    className={`mt-4 ml-auto border text-xs ${
+                      darkMode ? "border-yellow-500" : "border-slate-800"
+                    } p-1 rounded-md hover:scale-105`}
                     onClick={submitChanges}
                     onKeyDown={handleKeyDown}
                   >
@@ -244,7 +260,11 @@ const Education = ({ add, toggleAdd }) => {
         {add === 1 && (
           <div className="flex flex-col text-sm gap-2 p-3">
             <div className="flex justify-between min-w-max">
-              <h1 className="font-extrabold text-yellow-500">
+              <h1
+                className={`font-extrabold ${
+                  darkMode ? "text-yellow-500" : "text-slate-800"
+                }`}
+              >
                 <input
                   type="text
                 "
@@ -318,7 +338,9 @@ const Education = ({ add, toggleAdd }) => {
                   </p>
                 </div>
                 <button
-                  className="mt-4 ml-auto border text-xs border-yellow-500 p-1 rounded-md hover:scale-105 disabled:opacity-60"
+                  className={`mt-4 ml-auto border text-xs ${
+                    darkMode ? "border-yellow-500" : "border-slate-800"
+                  } p-1 rounded-md hover:scale-105`}
                   onClick={submitChanges}
                   onKeyDown={handleKeyDown}
                 >
@@ -331,7 +353,11 @@ const Education = ({ add, toggleAdd }) => {
         {education.length === 0 && add !== 1 && (
           <div className="mt-4 p-3 opacity-50">
             <div className="flex justify-between">
-              <h1 className="font-extrabold text-yellow-500">
+              <h1
+                className={`font-extrabold ${
+                  darkMode ? "text-yellow-500" : "text-slate-800"
+                }`}
+              >
                 Your University Here
               </h1>
               <h1 className="font-thin">Degree</h1>

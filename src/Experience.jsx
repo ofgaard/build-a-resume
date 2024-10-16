@@ -9,6 +9,7 @@ const Experience = ({
   toggleAddExperience,
   addExperience,
   toggleDropDown,
+  darkMode,
 }) => {
   const [editMode, setEditMode] = useState({ id: "" });
   const [experience, setExperience] = useState([]);
@@ -112,7 +113,13 @@ const Experience = ({
 
   return (
     <>
-      <div className="bg-neutral-700 rounded-md p-3">
+      <div
+        className={` ${
+          darkMode
+            ? "bg-neutral-700 transition-colors  "
+            : "bg-neutral-300 transition-colors  "
+        } rounded-md p-3`}
+      >
         <div className="flex items-center gap-2 mb-4">
           <FcBriefcase size={30}></FcBriefcase>
           <h1 className="translate-y-0.5 font-extrabold">Work Experience</h1>
@@ -122,7 +129,13 @@ const Experience = ({
             <div key={job.id} className="mt-4 p-3">
               <div className="flex justify-between">
                 <div className="flex gap-2">
-                  <h1 className="font-extrabold text-yellow-500">{job.name}</h1>
+                  <h1
+                    className={`font-extrabold ${
+                      darkMode ? "text-yellow-500" : "text-slate-800"
+                    }`}
+                  >
+                    {job.name}
+                  </h1>
                   <div className="flex items-center gap-1">
                     <button
                       className="hover:scale-110"
@@ -164,7 +177,11 @@ const Experience = ({
               className="flex flex-col text-sm gap-2 p-3"
             >
               <div className="flex justify-between min-w-max">
-                <h1 className="font-extrabold text-yellow-500">
+                <h1
+                  className={`font-extrabold ${
+                    darkMode ? "text-yellow-500" : "text-slate-800"
+                  }`}
+                >
                   <input
                     type="text
                 "
@@ -253,7 +270,11 @@ const Experience = ({
         {add === 2 && (
           <div className="flex flex-col text-sm gap-2 p-3">
             <div className="flex justify-between min-w-max">
-              <h1 className="font-extrabold text-yellow-500">
+              <h1
+                className={`font-extrabold ${
+                  darkMode ? "text-yellow-500" : "text-slate-800"
+                }`}
+              >
                 <input
                   type="text
                 "
@@ -328,7 +349,9 @@ const Experience = ({
                   </p>
                 </div>
                 <button
-                  className="mt-4 ml-auto border text-xs border-yellow-500 p-1 rounded-md hover:scale-105"
+                  className={`mt-4 ml-auto border text-xs ${
+                    darkMode ? "border-yellow-500" : "border-slate-800"
+                  } p-1 rounded-md hover:scale-105`}
                   onClick={submitChanges}
                   onKeyDown={handleKeyDown}
                 >
@@ -341,7 +364,13 @@ const Experience = ({
         {experience.length === 0 && add !== 2 && (
           <div className="mt-4 pb-3 opacity-50">
             <div className="flex justify-between">
-              <h1 className="font-extrabold text-yellow-500">Job goes here</h1>
+              <h1
+                className={`font-extrabold ${
+                  darkMode ? "text-yellow-500" : "text-slate-800"
+                }`}
+              >
+                Job goes here
+              </h1>
               <h1 className="font-thin">Location</h1>
             </div>
             <div className="flex justify-between">
