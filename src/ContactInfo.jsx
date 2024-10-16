@@ -58,11 +58,11 @@ const ContactInfo = ({ edit, toggleEdit }) => {
       ) : (
         <div className="flex flex-col items-center mb-10">
           <div className="flex gap-4">
-            <h1 className="text-5xl md:text-6xl font-extrabold text-center">
+            <h1 className="text-5xl md:text-6xl font-extrabold">
               <input
                 type="text"
                 name="name"
-                className="bg-transparent text-center"
+                className="bg-transparent text-center max-w-xs outline"
                 value={contacts.name}
                 placeholder={contacts.name}
                 onChange={handleInputChange}
@@ -80,7 +80,7 @@ const ContactInfo = ({ edit, toggleEdit }) => {
                 <input
                   type="text"
                   name="phone"
-                  className="bg-transparent text-center"
+                  className="bg-transparent max-w-20"
                   value={contacts.phone}
                   placeholder={contacts.phone}
                   onChange={handleInputChange}
@@ -92,7 +92,7 @@ const ContactInfo = ({ edit, toggleEdit }) => {
               <input
                 type="text"
                 name="email"
-                className="bg-transparent text-center"
+                className="bg-transparent"
                 value={contacts.email}
                 placeholder={contacts.email}
                 onChange={handleInputChange}
@@ -103,7 +103,7 @@ const ContactInfo = ({ edit, toggleEdit }) => {
               <input
                 type="text"
                 name="location"
-                className="bg-transparent text-center"
+                className="bg-transparent"
                 value={contacts.location}
                 placeholder={contacts.location}
                 onChange={handleInputChange}

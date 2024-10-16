@@ -362,7 +362,7 @@ const Experience = ({
           </div>
         )}{" "}
         {experience.length === 0 && add !== 2 && (
-          <div className="mt-4 pb-3 opacity-50">
+          <div className="mt-4 p-3 opacity-50">
             <div className="flex justify-between">
               <h1
                 className={`font-extrabold ${

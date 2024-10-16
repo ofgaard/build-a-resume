@@ -61,8 +61,8 @@ function App() {
         <div
           className={`print:bg-slate-50 h-screen flex overflow-auto flex-col print:text-black font-semibold p-10 min-w-96 max-w-3xl mx-auto ${
             darkMode
-              ? "text-slate-50 bg-neutral-800 transition-colors duration-300 before:bg-neutral-200"
-              : "bg-neutral-200 transition-colors duration-300 before:bg-neutral-800 text-slate-800"
+              ? "text-slate-50 bg-neutral-800 transition-colors ease-in duration-300 before:bg-neutral-200"
+              : "bg-neutral-200 transition-colors ease-in duration-300 before:bg-neutral-800 text-slate-800"
           }`}
         >
           <ContactInfo edit={edit} toggleEdit={toggleEdit}></ContactInfo>
